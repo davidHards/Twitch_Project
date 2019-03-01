@@ -11,12 +11,16 @@ import csv
 import requests
 import json
 import time
+import os.path
 
 # top games pagination
 tAfter = 'data'
 # top games results
 tResults = 'data'
 timestr = time.strftime("%d%m%Y-%H%M%S")
+path = 'E:/UG_Project_Data/'
+file = timestr + '-topGames'
+completeName = os.path.join(path, file + ".csv")
 
 # This method gets top 100 games once, and stores results in csv file
 def topGames():
@@ -35,7 +39,7 @@ def topGames():
     tResults = json_response['data']
     index = int(len(json_response['data']))
 
-    with open(timestr + '-topGames.csv', 'w', encoding='utf-8-sig') as f:
+    with open(completeName, 'w', newline='', encoding='utf-8-sig') as f:
         x=0
         w = csv.DictWriter(f, tResults[x].keys())
         w.writeheader()
@@ -65,7 +69,7 @@ def moreTopGames():
     index = int(len(json_response['data']))
 
     try:
-        with open(timestr + '-topGames.csv', 'a', encoding='utf-8-sig') as f:
+        with open(completeName, 'a', newline='', encoding='utf-8-sig') as f:
             x=0
             w = csv.DictWriter(f, tResults[x].keys())
             for x in range(index):

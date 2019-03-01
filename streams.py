@@ -11,12 +11,16 @@ import csv
 import requests
 import json
 import time
+import os.path
 
 # stream pagination
 sAfter = 'data'
 # stream results
 sResults = 'data'
 timestr = time.strftime("%d%m%Y-%H%M%S")
+path = 'E:/UG_Project_Data/'
+file = timestr + '-streamData'
+completeName = os.path.join(path, file + ".csv")
 
 # This method gets top 100 streams once, and stores results in csv file
 def getStreams():
@@ -35,7 +39,7 @@ def getStreams():
     sResults = json_response['data']
     index = int(len(json_response['data']))
 
-    with open(timestr + '-streamData.csv', 'w', encoding='utf-8-sig') as f:
+    with open(completeName, 'w', newline='', encoding='utf-8-sig') as f:
         x=0
         w = csv.DictWriter(f, sResults[x].keys())
         w.writeheader()
@@ -61,7 +65,7 @@ def moreStreams():
     index = int(len(json_response['data']))
 
     try:
-        with open(timestr + '-streamData.csv', 'a', encoding='utf-8-sig') as f:
+        with open(completeName, 'a', newline='', encoding='utf-8-sig') as f:
             x=0
             w = csv.DictWriter(f, sResults[x].keys())
             for x in range(index):
@@ -77,5 +81,6 @@ if __name__ == '__main__':
     while i < 140:
         print(i)
         moreStreams()
+        print(file)
         i += 1
         time.sleep(6)
