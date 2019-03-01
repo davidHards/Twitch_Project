@@ -1,20 +1,3 @@
-Skip to content
- 
-Search or jump to…
-
-Pull requests
-Issues
-Marketplace
-Explore
- @davidHards Sign out
-0
-0 0 davidHards/Twitch_Project
- Code  Issues 0  Pull requests 0  Projects 0  Wiki  Insights  Settings
-Twitch_Project/database.py
- David Graham Hards working on database.py
-890753d  an hour ago
-240 lines (222 sloc)  7.33 KB
-    
 '''
 Read CSV files and input data into streams and top_games tables
 Date: 24/01/2019
@@ -28,21 +11,9 @@ and the other for stream data.
 import glob
 import os
 import csv
-import mysql.connector
 
-# MYSQL logon
-mydb = mysql.connector.connect(
-  host="localhost",
-  user="David",
-  passwd="Sword",
-  database="twitch"
-)
-mycursor = mydb.cursor()
-
-# list for strean data file names
-streamData=[]
-# list for game data file names
-topGames=[]
+def maxViewCount():
+ with (open 
 
 # This function obtains file name list from a folder, this is to open files in other functions
 def getFileNames():
@@ -252,15 +223,3 @@ if __name__== '__main__':
     streamsToList()
     #createGamesDB()
     #createStreamDB()
-© 2019 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Help
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
