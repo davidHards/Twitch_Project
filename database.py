@@ -95,7 +95,7 @@ def streamsToList():
     num = 0
     theFile = streamData[0]
     for x in range(index):
-        if (num == 301 or x == index):
+        if (num == 301):
             filterStreams(sData)
             num = 0
             sData.clear()
@@ -237,3 +237,4 @@ if __name__== '__main__':
     streamsToList()
     #createGamesDB()
     #createStreamDB()
+    filterStreams(sData)
