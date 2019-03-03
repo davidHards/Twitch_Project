@@ -38,33 +38,57 @@ def getFileNames():
     os.chdir("E://UG_Project_Data")
     # obtains stream data file names
     for file in glob.glob("*streamD*"):
-        streamsToList(file)
+        streamData.append(file)
     return
 
+sData = []
 # List to store stream data from csv files
 # Function to read all streamData csv files and store data in a list
-def streamsToList(self):
-    try:
-        theFile = self
-        timestamp = theFile[0:15]
-        dateTime = timestamp[4:8]+"-"+timestamp[2:4]+"-"+timestamp[0:2]+"T"+timestamp[9:11]+":"+timestamp[11:13]+":"+timestamp[13:15]+"Z"
-        with open (theFile, encoding="utf8") as f:
-            with open('viewCount.csv', 'a', newline='', encoding='utf-8-sig') as output:
+def streamsToList():
+    global sData
+    global streamData
+    index = len(streamData)
+    num = 0
+    theFile = streamData[0]
+    print(index)
+    for x in range(index):
+        if (num == 1000 or x == index):
+            sortList(sData)
+            num = 0
+            sData.clear()
+        try:
+            theFile = streamData[x]
+            with open (theFile, encoding="utf8") as f:
                 reader = csv.reader(f)
                 next(reader) # skip header
-                writer = csv.writer(output)
                 for row in reader:
                     if (row != []):
                         col1 = row[0]
                         col8 = row[7]
-                        col13 = dateTime
-                        temp = col1, col8, col13
-                        writer.writerow(temp)
-    except:
-        print("Problem file:")
-        print(theFile)
-
+                        temp = col1, col8
+                        sData.append(temp)
+        except:
+            print("Problem file:")
+            print(theFile)
+        print(num)
+        num += 1
     return
+
+def sortList(self):
+    sData = self
+    print("A")
+    sData = set(sData)
+    print("B")
+    sData = list(sData)
+    print("C")
+    sData.sort()
+    print("D")
+    with open('viewCount2.csv', 'a', newline='', encoding='utf-8-sig') as output:
+        writer = csv.writer(output)
+        for d in sData:
+            writer.writerow(d)
 
 if __name__== '__main__':
     getFileNames()
+    streamsToList()
+    #sortList()

@@ -95,7 +95,7 @@ def streamsToList():
     num = 0
     theFile = streamData[0]
     for x in range(index):
-        if (num == 301):
+        if (num == 301 or x == index):
             filterStreams(sData)
             num = 0
             sData.clear()
@@ -216,7 +216,7 @@ def createStreamDB(self):
     global mydb
     global mycursor
     #global sData
-    streams = self
+    sData = self
     tupleList = ()
     for x in sData:
         tupleList = tuple(x)
