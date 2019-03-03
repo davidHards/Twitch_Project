@@ -52,7 +52,7 @@ def streamsToList():
     theFile = streamData[0]
     print(index)
     for x in range(index):
-        if (num == 1000 or x == index):
+        if (num == 1000):
             sortList(sData)
             num = 0
             sData.clear()
@@ -91,4 +91,4 @@ def sortList(self):
 if __name__== '__main__':
     getFileNames()
     streamsToList()
-    #sortList()
+    sortList(sData)
