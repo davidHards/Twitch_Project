@@ -56,15 +56,16 @@ def idLists():
     for x in range(index):
         number = 1
         temp = id[x], number
+        print(temp)
         idList.append(temp)
 
     return
 
 counter = 0
+index = len(idList)
 def writeFile(self):
     global idList
     global counter
-    index = len(idList)
     num = 0
     completeName = self
     with open(completeName, 'a', newline='', encoding='utf-8-sig') as output:
@@ -73,6 +74,7 @@ def writeFile(self):
             if (num == 100):
                 nun = 0
                 newFile()
+                index = index - counter
             writer.writerow(idList[counter])
             num += 1
             counter += 1
@@ -85,9 +87,10 @@ def newFile():
     x += 1
     path = 'E:/UG_Project_Data/ID/'
     file = 'ids' + x
-    completeName = os.path.join(pathg, file + ".csv")
+    completeName = os.path.join(path, file + ".csv")
     return writeFile(completeName)
 
 if __name__== '__main__':
     getFileNames()
     idLists()
+    newFile()
