@@ -8,6 +8,7 @@ Author: David Hards
 import glob
 import os
 import csv
+import os.path
 
 streamData=[]
 
@@ -22,7 +23,10 @@ def getFileNames():
         streamData.append(file)
     return
 
-def idList():
+idList=[]
+
+def idLists():
+    global idList
     global streamData
     id = set()
     index = len(streamData)
@@ -48,20 +52,42 @@ def idList():
     index = len(id)
     id = list(id)
     id.sort()
-    idList = []
+
     for x in range(index):
-        number = "1"
-        temp = id[x], +","+number
+        number = 1
+        temp = id[x], number
         idList.append(temp)
-
-
-    with open('idSet2.csv', 'a', newline='', encoding='utf-8-sig') as output:
-        writer = csv.writer(output)
-        for row in idList:
-            writer.writerow(row)
 
     return
 
+counter = 0
+def writeFile(self):
+    global idList
+    global counter
+    index = len(idList)
+    num = 0
+    completeName = self
+    with open(completeName, 'a', newline='', encoding='utf-8-sig') as output:
+        writer = csv.writer(output)
+        for x in range(index):
+            if (num == 100):
+                nun = 0
+                newFile()
+            writer.writerow(idList[counter])
+            num += 1
+            counter += 1
+
+    return
+
+x = 0
+def newFile():
+    global x
+    x += 1
+    path = 'E:/UG_Project_Data/ID/'
+    file = 'ids' + x
+    completeName = os.path.join(pathg, file + ".csv")
+    return writeFile(completeName)
+
 if __name__== '__main__':
     getFileNames()
-    idList()
+    idLists()

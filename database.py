@@ -215,7 +215,6 @@ def createGamesDB():
 def createStreamDB(self):
     global mydb
     global mycursor
-    #global sData
     sData = self
     tupleList = ()
     for x in sData:
@@ -227,8 +226,7 @@ def createStreamDB(self):
             mydb.commit()
         except:
             test = 1
-            #print("Error updating this record:")
-            #print(val)
+
     return
 
 if __name__== '__main__':
