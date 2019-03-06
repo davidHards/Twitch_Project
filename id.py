@@ -85,8 +85,9 @@ x = 0
 def newFile():
     global x
     x += 1
+    numStr = str(x)
     path = 'E:/UG_Project_Data/ID/'
-    file = 'ids' + x
+    file = 'ids' + numStr
     completeName = os.path.join(path, file + ".csv")
     return writeFile(completeName)
 

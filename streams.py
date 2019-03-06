@@ -81,6 +81,5 @@ if __name__ == '__main__':
     while i < 140:
         print(i)
         moreStreams()
-        print(file)
         i += 1
         time.sleep(6)

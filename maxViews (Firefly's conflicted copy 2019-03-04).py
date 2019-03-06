@@ -31,4 +31,5 @@ with open ('idSet2.csv', encoding='utf-8-sig') as ids:
                         if (views > maxViews):
                             maxViews = views
                             temp = id1, maxViews
+
                 writer.writerow(temp)
