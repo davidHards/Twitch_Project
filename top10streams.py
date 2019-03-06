@@ -15,7 +15,7 @@ mycursor = mydb.cursor()
 
 
 '''
-sql = "SELECT \
+ "SELECT \
     total_views.total_view_count as totalViews, \
     streams.id as ID, \
     streams.game_id as gameID, \
